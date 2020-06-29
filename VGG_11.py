@@ -26,7 +26,6 @@ def Vgg_11(num_of_classes):
     model = Sequential()
     #first convolution
     model.add(Conv2D(64,(3,3),strides=(1,1),padding='same',input_shape = (224,224,3) ))
-    model.add(BatchNormalization())
     model.add(Activation('relu'))
 
     #first pooling layer
@@ -34,7 +33,6 @@ def Vgg_11(num_of_classes):
 
     #second Convolution
     model.add(Conv2D(128,(3,3),strides=(1,1),padding='same'))
-    model.add(BatchNormalization())
     model.add(Activation('relu'))
 
     #second pooling layer
@@ -42,12 +40,10 @@ def Vgg_11(num_of_classes):
 
     #third convolution
     model.add(Conv2D(256,(3,3),strides=(1,1),padding='same'))
-    model.add(BatchNormalization())
     model.add(Activation('relu'))
 
     #fourth convolutional layer
     model.add(Conv2D(256,(3,3),strides=(1,1),padding='same'))
-    model.add(BatchNormalization())
     model.add(Activation('relu'))
 
     #third Pooling Layer
@@ -55,12 +51,10 @@ def Vgg_11(num_of_classes):
 
     #fifth convolution
     model.add(Conv2D(512,(3,3),strides=(1,1),padding='same'))
-    model.add(BatchNormalization())
     model.add(Activation('relu'))
 
     #sixth convolution
     model.add(Conv2D(512,(3,3),strides=(1,1),padding='same'))
-    model.add(BatchNormalization())
     model.add(Activation('relu'))
 
     #fourth pooling layer
@@ -68,12 +62,10 @@ def Vgg_11(num_of_classes):
 
     #seventh convolution
     model.add(Conv2D(512,(3,3),strides=(1,1),padding='same'))
-    model.add(BatchNormalization())
     model.add(Activation('relu'))
 
     #eigth convolution
     model.add(Conv2D(512,(3,3),strides=(1,1),padding='same'))
-    model.add(BatchNormalization())
     model.add(Activation('relu'))
 
     #fifth pooling layer
@@ -83,21 +75,17 @@ def Vgg_11(num_of_classes):
 
     #Fully connected layers
     model.add(Dense(4096))
-    model.add(BatchNormalization())
     model.add(Activation('relu'))
     model.add(Dropout(0.5))
 
     model.add(Dense(4096))
-    model.add(BatchNormalization())
     model.add(Activation('relu'))
     model.add(Dropout(0.5))
 
     model.add(Dense(1000))
-    model.add(BatchNormalization())
     model.add(Activation('relu'))
 
     model.add(Dense(num_of_classes))  #no of output nodes = no_of_classes
-    model.add(BatchNormalization())
     model.add(Activation('softmax'))
 
     sgd = SGD(learning_rate=0.01)
